@@ -76,7 +76,7 @@ public class AutomaticTeller_Educational
 
         //Prompt
         c.clear ();
-        c.println ("Okay, how much money would you like to deposit? (Please the following format: 2.45)");
+        c.println ("Okay, how much money would you like to deposit? (Please use the following format: 2.45)");
         value = c.readDouble (); //There is no way to make sure they entered a number without crashing the program, so, we hope they entered it correctly. Or else, the program will crash
         startAmmount = startAmmount + value;
         c.clear ();
