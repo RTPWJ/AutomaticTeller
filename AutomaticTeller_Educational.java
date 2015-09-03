@@ -51,7 +51,7 @@ public class AutomaticTeller_Educational
                 }
             case (2):
                 {
-                    //withdraw ();
+                    withdraw ();
                     break;
                 }
             case (3):
@@ -71,14 +71,45 @@ public class AutomaticTeller_Educational
     //Deposit Method
     public static void deposit ()
     {
-        //Variables
+        //Variable
         double value = 0;
 
         //Prompt
         c.clear ();
-        c.println ("Okay, how much money would you like to deposit? (Use the following format: 2.45)");
+        c.println ("Okay, how much money would you like to deposit? (Please the following format: 2.45)");
         value = c.readDouble (); //There is no way to make sure they entered a number without crashing the program, so, we hope they entered it correctly. Or else, the program will crash
         startAmmount = startAmmount + value;
+        c.clear ();
+        c.print ("Your current balance is $");
+        c.print (startAmmount, 0, 2);
+        c.println (". Please wait well we return you to the main menu...");
+        menu (); //Re-call the menu method
+    }
+
+
+    public static void withdraw ()
+    {
+        //Variable
+        double value = 0;
+
+        //Prompt
+        c.clear ();
+        c.println ("Okay, how much money would you like to withdraw? (Please use the following format: 2.45)");
+        value = c.readDouble ();
+
+        while (value > startAmmount) //This will prevent us from getting a negative balance, by making sure the user does not take out more then they have
+        {
+            c.clear ();
+            c.print ("You cannot withdraw $");
+            c.print (value, 0, 2);
+            c.print (", because you only have $");
+            c.print (startAmmount, 0, 2);
+            c.println (" in your account! Please enter the ammount you would like to withdaw. (Please use the following format: 2.45)");
+            value = c.readDouble ();
+        }
+        
+        startAmmount = startAmmount - value; //Compleate the transaction
+        
         c.clear ();
         c.print ("Your current balance is $");
         c.print (startAmmount, 0, 2);
