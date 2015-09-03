@@ -11,7 +11,7 @@ import hsa.Console;
 public class AutomaticTeller_Educational
 {
     static Console c;
-    static double startAmmount = 1337; //Starting Amount
+    static double startAmmount = 1337; //By making this a static double, it is acsessable to all methods, as well as can have deciaml points for cents values, although ATM's cant dispence coins
 
     public static void main (String[] args)
     {
@@ -56,12 +56,12 @@ public class AutomaticTeller_Educational
                 }
             case (3):
                 {
-                    //printBalance ();
+                    printBalance ();
                     break;
                 }
             default: //case (4): or default: is valid here, as we forced the entry of either 1, 2, 3, or 4 using the while statement
                 {
-                    //quit ();
+                    quit ();
                     break;
                 }
         }
@@ -107,14 +107,32 @@ public class AutomaticTeller_Educational
             c.println (" in your account! Please enter the ammount you would like to withdaw. (Please use the following format: 2.45)");
             value = c.readDouble ();
         }
-        
+
         startAmmount = startAmmount - value; //Compleate the transaction
-        
+
         c.clear ();
         c.print ("Your current balance is $");
         c.print (startAmmount, 0, 2);
         c.println (". Please wait well we return you to the main menu...");
-        menu (); //Re-call the menu method
+        menu ();
+    }
+
+
+    public static void printBalance ()
+    {
+        c.clear ();
+        c.print ("Your current balance is $");
+        c.print (startAmmount, 0, 2);
+        c.println (". Please wait well we return you to the main menu...");
+        menu ();
+    }
+
+
+    public static void quit ()
+    {
+        c.clear ();
+        c.println ("Thank you for using Alexander's ATM software. We hope to see you again!"); 
+        //No need to call the main menu after this method, as we are now done all transactions
     }
 }
 
